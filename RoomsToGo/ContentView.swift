@@ -18,6 +18,9 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             VStack {
+                Image("RoomsToGo")
+                    .padding(.bottom, 30)
+                
                 Text("Message Center")
                     .font(.custom("Poppins-Regular", size: 24))
                     .padding(.bottom, 20)
@@ -51,6 +54,8 @@ struct ContentView: View {
                 NavigationLink(destination: MessageCenter(messages: messages.sorted(by: { $0.date > $1.date })), isActive: $navigateToMessageCenter) {
                     EmptyView()
                 }
+                
+                Spacer()
             }
             .padding()
         }
