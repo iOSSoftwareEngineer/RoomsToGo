@@ -9,9 +9,6 @@ import Foundation
 
 import SwiftUI
 
-
-import SwiftUI
-
 struct MessageCenter: View {
     let messages: [Message]
 
@@ -20,7 +17,7 @@ struct MessageCenter: View {
             List {
                 Section(header:
                             Text("Message Center")
-                            .font(.system(size: 16, weight: .bold, design: .default))
+                            .font(.custom("Poppins-Bold", size: 16))
                             .foregroundColor(.black)
                             .padding(.top)
                             .padding(.bottom, 8)
@@ -28,14 +25,14 @@ struct MessageCenter: View {
                     ForEach(messages) { message in
                         HStack {
                             Text(message.message)
-                                .font(.system(size: 14))
+                                .font(.custom("Poppins-Regular", size: 14))
                                 .lineLimit(nil)
                                 .multilineTextAlignment(.leading)
                             
                             Spacer()
                             
                             Text(customFormattedDate(from: message.date))
-                                .font(.system(size: 14))
+                                .font(.custom("Poppins-Regular", size: 14))
                                 .foregroundColor(.black)
                         }
                     }

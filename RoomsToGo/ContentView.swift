@@ -19,11 +19,11 @@ struct ContentView: View {
         NavigationView {
             VStack {
                 Text("Rooms to Go")
-                    .font(.custom("Poppins", size: 24))
+                    .font(.custom("Poppins-Regular", size: 24))
                     .padding(.bottom, 20)
                 
                 Text("Enter your email address:")
-                    .font(.custom("Poppins", size: 16))
+                    .font(.custom("Poppins-Regular", size: 16))
                 
                 TextField("Email", text: $email)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
@@ -33,7 +33,7 @@ struct ContentView: View {
                 
                 Button(action: searchButtonTapped) {
                     Text("Search")
-                        .font(.custom("Poppins", size: 16))
+                        .font(.custom("Poppins-Regular", size: 16))
                         .foregroundColor(.white)
                         .frame(minWidth: 0, maxWidth: .infinity)
                         .padding()
