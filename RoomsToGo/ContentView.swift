@@ -14,6 +14,8 @@ struct ContentView: View {
     @State private var showAlert: Bool = false
     @State private var alertTitle: String = ""
     @State private var alertMessage: String = ""
+    @State private var isLoading = false
+    
     
     var body: some View {
         NavigationView {
@@ -51,9 +53,19 @@ struct ContentView: View {
                 }
                 .padding(.horizontal, 20)
                 
-                NavigationLink(destination: MessageCenter(messages: messages.sorted(by: { $0.date > $1.date })), isActive: $navigateToMessageCenter) {
-                    EmptyView()
+                
+                if isLoading {
+                    ProgressView()
+                        .padding(.top, 20)
                 }
+                
+                
+            
+                NavigationLink(
+                    destination: MessageCenter(messages: messages.sorted(by: { $0.date > $1.date })),
+                    isActive: $navigateToMessageCenter,
+                    label: { EmptyView() }
+                )
                 
                 Spacer()
             }
@@ -64,6 +76,8 @@ struct ContentView: View {
     private func searchButtonTapped() {
         // Validate email address
         if isValidEmail(email) {
+            isLoading = true
+            
             // Make the API request
             fetchData(for: email)
         } else {
@@ -90,6 +104,9 @@ struct ContentView: View {
             }
             
             let task = URLSession.shared.dataTask(with: url) { data, response, error in
+                
+                self.isLoading = false
+                
                 if let error = error {
                     print("Error: \(error.localizedDescription)")
                     return
