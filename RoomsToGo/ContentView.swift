@@ -81,50 +81,69 @@ struct ContentView: View {
     
     
     private func fetchData(for email: String) {
-        let baseURL = "https://vcp79yttk9.execute-api.us-east-1.amazonaws.com/messages/users/"
-        let urlString = baseURL + email
-        
-        guard let url = URL(string: urlString) else {
-            print("Invalid URL")
-            return
-        }
-        
-        let task = URLSession.shared.dataTask(with: url) { data, response, error in
-            if let error = error {
-                print("Error: \(error.localizedDescription)")
+            let baseURL = "https://vcp79yttk9.execute-api.us-east-1.amazonaws.com/messages/users/"
+            let urlString = baseURL + email
+            
+            guard let url = URL(string: urlString) else {
+                print("Invalid URL")
                 return
             }
             
-            guard let data = data else {
-                print("No data received")
-                return
-            }
-            
-            do {
-                let responseDict = try JSONSerialization.jsonObject(with: data) as? [String: Any]
-                
-                if let errorMessage = responseDict?["Error"] as? String, !errorMessage.isEmpty {
-                    DispatchQueue.main.async {
-                        let alert = UIAlertController(title: "Error", message: errorMessage, preferredStyle: .alert)
-                        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                        UIApplication.shared.windows.first?.rootViewController?.present(alert, animated: true, completion: nil)
-                    }
-                } else {
-                    let messages = try JSONDecoder().decode([Message].self, from: data)
-                    
-                    // Update the UI on the main thread
-                    DispatchQueue.main.async {
-                        self.messages = messages
-                        self.navigateToMessageCenter = true
-                    }
+            let task = URLSession.shared.dataTask(with: url) { data, response, error in
+                if let error = error {
+                    print("Error: \(error.localizedDescription)")
+                    return
                 }
-            } catch {
-                print("Received data: \(String(data: data, encoding: .utf8) ?? "Unable to convert data to UTF-8 string")")
-                print("Decoding error: \(error.localizedDescription)")
+                
+                guard let data = data else {
+                    print("No data received")
+                    return
+                }
+                
+                do {
+                    let responseDict = try JSONSerialization.jsonObject(with: data) as? [String: Any]
+                    
+                    if let errorMessage = responseDict?["Error"] as? String, !errorMessage.isEmpty {
+                        DispatchQueue.main.async {
+                            let alert = UIAlertController(title: "Error", message: errorMessage, preferredStyle: .alert)
+                            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                            
+                            
+                            guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+                                  let rootViewController = windowScene.windows.first?.rootViewController else {
+                                fatalError("Unable to retrieve window scene or root view controller")
+                            }
+
+                            rootViewController.present(alert, animated: true, completion: nil)
+                        }
+                    } else {
+                        let messages = try JSONDecoder().decode([Message].self, from: data)
+                        
+                        // Update the UI on the main thread
+                        DispatchQueue.main.async {
+                            self.messages = messages
+                            self.navigateToMessageCenter = true
+                        }
+                    }
+                } catch {
+                    let errorDescription = "Unexpected error occurred."
+                    DispatchQueue.main.async {
+                        let alert = UIAlertController(title: "Error", message: errorDescription, preferredStyle: .alert)
+                        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                        
+                        guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+                              let rootViewController = windowScene.windows.first?.rootViewController else {
+                            fatalError("Unable to retrieve window scene or root view controller")
+                        }
+
+                        rootViewController.present(alert, animated: true, completion: nil)
+                    }
+                    print("Received data: \(String(data: data, encoding: .utf8) ?? "Unable to convert data to UTF-8 string")")
+                    print("Decoding error: \(error.localizedDescription)")
+                }
             }
+            task.resume()
         }
-        task.resume()
-    }
 
 }
 
