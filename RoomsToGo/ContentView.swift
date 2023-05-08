@@ -18,12 +18,15 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             VStack {
-                Text("Rooms to Go")
+                Text("Message Center")
                     .font(.custom("Poppins-Regular", size: 24))
                     .padding(.bottom, 20)
                 
-                Text("Enter your email address:")
+                
+                Text("Enter your email to search for your messages:")
+                    .multilineTextAlignment(.center)
                     .font(.custom("Poppins-Regular", size: 16))
+                
                 
                 TextField("Email", text: $email)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
@@ -37,7 +40,7 @@ struct ContentView: View {
                         .foregroundColor(.white)
                         .frame(minWidth: 0, maxWidth: .infinity)
                         .padding()
-                        .background(Color(red: 0, green: 79/255, blue: 181/255))
+                        .background(Color(red: 0, green: 79/255, blue: 181/255))  //#004FB5
                         .cornerRadius(40)
                 }
                 .alert(isPresented: $showAlert) {
@@ -45,7 +48,6 @@ struct ContentView: View {
                 }
                 .padding(.horizontal, 20)
                 
-                // Add this NavigationLink below the Button
                 NavigationLink(destination: MessageCenter(messages: messages.sorted(by: { $0.date > $1.date })), isActive: $navigateToMessageCenter) {
                     EmptyView()
                 }
@@ -119,27 +121,6 @@ struct ContentView: View {
         task.resume()
     }
 
-}
-
-
-extension Color {
-    init(hex: String) {
-        let hex = hex.trimmingCharacters(in: CharacterSet.alphanumerics.inverted)
-        var int: UInt64 = 0
-        Scanner(string: hex).scanHexInt64(&int)
-        let a, r, g, b: UInt64
-        switch hex.count {
-        case 3: // RGB (12-bit)
-            (a, r, g, b) = (255, (int >> 8) * 17, (int >> 4 & 0xF) * 17, (int & 0xF) * 17)
-        case 6: // RGB (24-bit)
-            (a, r, g, b) = (255, int >> 16, int >> 8 & 0xFF, int & 0xFF)
-        case 8: // ARGB (32-bit)
-            (a, r, g, b) = (int >> 24, int >> 16 & 0xFF, int >> 8 & 0xFF, int & 0xFF)
-        default:
-            (a, r, g, b) = (255, 0, 0, 0)
-        }
-        self.init(red: Double(r) / 255, green: Double(g) / 255, blue: Double(b) / 255, opacity: Double(a) / 255)
-    }
 }
 
             
