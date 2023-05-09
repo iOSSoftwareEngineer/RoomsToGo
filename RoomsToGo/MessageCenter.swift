@@ -5,8 +5,6 @@
 //  Created by Richard B. Rubin on 5/8/23.
 //
 
-import Foundation
-
 import SwiftUI
 
 struct MessageCenter: View {
