@@ -3,7 +3,7 @@
 //  RoomsToGo
 //
 //  Created by Richard B. Rubin on 5/8/23.
-//
+//  Xcode Version 14.3 (14E222b)
 
 import SwiftUI
 
@@ -37,7 +37,7 @@ struct ContentView: View {
                     .padding(.bottom, 20)
                 
                 
-                Text("Enter your email to search for your messages:")
+                Text("Enter your email to search for your messages")
                     .multilineTextAlignment(.center)
                     .font(.custom("Poppins-Regular", size: 16))
                 
