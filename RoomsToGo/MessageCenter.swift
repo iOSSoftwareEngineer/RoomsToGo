@@ -17,7 +17,7 @@ struct MessageCenter: View {
                 // section header that displays "Message Center" in bold
                 Section(header:
                             Text("Message Center")
-                            .font(.custom("Poppins-Bold", size: 16))
+                            .font(.custom(Constants.messageCenterHeaderFont, size: Constants.messageCenterBoldFontSize))
                             .foregroundColor(.black)
                             .padding(.top)
                             .padding(.bottom, 8)
@@ -27,7 +27,7 @@ struct MessageCenter: View {
                         HStack {
                             // text of the message
                             Text(message.message)
-                                .font(.custom("Poppins-Regular", size: 14))
+                                .font(.custom(Constants.defaultFont, size: Constants.messageCenterFontSize))
                                 .lineLimit(nil)
                                 .multilineTextAlignment(.leading)
                             
@@ -35,7 +35,7 @@ struct MessageCenter: View {
                             
                             // date of the message, formatted as a string using the customFormattedDate method
                             Text(customFormattedDate(from: message.date))
-                                .font(.custom("Poppins-Regular", size: 14))
+                                .font(.custom(Constants.defaultFont, size: Constants.messageCenterFontSize))
                                 .foregroundColor(.black)
                         }
                     }

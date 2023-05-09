@@ -33,13 +33,13 @@ struct ContentView: View {
                     .padding(.bottom, 30)
                 
                 Text("Message Center")
-                    .font(.custom("Poppins-Regular", size: 24))
+                    .font(.custom(Constants.defaultFont, size: Constants.mainScreenHeaderFontSize))
                     .padding(.bottom, 20)
                 
                 
                 Text("Enter your email to search for your messages")
                     .multilineTextAlignment(.center)
-                    .font(.custom("Poppins-Regular", size: 16))
+                    .font(.custom(Constants.defaultFont, size: Constants.mainScreenFontSize))
                 
                 
                 // This is the TextField where the user can input their email.
@@ -52,11 +52,11 @@ struct ContentView: View {
                 // This is the Search button. When pressed, it calls the searchButtonTapped() function.
                 Button(action: searchButtonTapped) {
                     Text("Search")
-                        .font(.custom("Poppins-Regular", size: 16))
+                        .font(.custom(Constants.defaultFont, size: Constants.mainScreenFontSize))
                         .foregroundColor(.white)
                         .frame(minWidth: 0, maxWidth: .infinity)
                         .padding()
-                        .background(Color(red: 0, green: 79/255, blue: 181/255))  //#004FB5
+                        .background(Constants.searchButtonColor)
                         .cornerRadius(40)
                 }
                 // This alert is shown when showAlert is true.
