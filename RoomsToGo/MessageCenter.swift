@@ -34,7 +34,7 @@ struct MessageCenter: View {
                             Spacer()
                             
                             // date of the message, formatted as a string using the customFormattedDate method
-                            Text(customFormattedDate(from: message.date))
+                            Text(message.date.customFormattedDate())
                                 .font(.custom(Constants.defaultFont, size: Constants.messageCenterFontSize))
                                 .foregroundColor(.black)
                         }
@@ -44,13 +44,5 @@ struct MessageCenter: View {
             // style for the list that removes the default styling.
             .listStyle(PlainListStyle())
         }
-    }
-    
-
-    // Takes in a date and formats it as a string using the "M/dd/yyyy" format.
-    private func customFormattedDate(from date: Date) -> String {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "M/dd/yyyy"
-        return formatter.string(from: date)
     }
 }

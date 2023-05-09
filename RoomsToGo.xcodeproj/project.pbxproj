@@ -28,6 +28,8 @@
 		7977456A2A09C5A20027D597 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 797745682A09C5A20027D597 /* String+Extensions.swift */; };
 		7977456C2A09CBF50027D597 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7977456B2A09CBF50027D597 /* Constants.swift */; };
 		7977456D2A09CBF50027D597 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7977456B2A09CBF50027D597 /* Constants.swift */; };
+		79A495572A09FC13005C6ADA /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A495562A09FC13005C6ADA /* Date+Extensions.swift */; };
+		79A495582A09FC13005C6ADA /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A495562A09FC13005C6ADA /* Date+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +68,7 @@
 		797745652A09BCB80027D597 /* MessageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageService.swift; sourceTree = "<group>"; };
 		797745682A09C5A20027D597 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		7977456B2A09CBF50027D597 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		79A495562A09FC13005C6ADA /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +129,7 @@
 				7977454B2A097EC70027D597 /* Message.swift */,
 				797745212A0977030027D597 /* RoomsToGoApp.swift */,
 				797745682A09C5A20027D597 /* String+Extensions.swift */,
+				79A495562A09FC13005C6ADA /* Date+Extensions.swift */,
 				7977456B2A09CBF50027D597 /* Constants.swift */,
 			);
 			path = RoomsToGo;
@@ -300,6 +304,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7977454F2A09863B0027D597 /* MessageCenter.swift in Sources */,
+				79A495572A09FC13005C6ADA /* Date+Extensions.swift in Sources */,
 				797745692A09C5A20027D597 /* String+Extensions.swift in Sources */,
 				797745662A09BCB80027D597 /* MessageService.swift in Sources */,
 				7977454C2A097EC70027D597 /* Message.swift in Sources */,
@@ -315,6 +320,7 @@
 			files = (
 				797745672A09BCB80027D597 /* MessageService.swift in Sources */,
 				797745332A0977050027D597 /* RoomsToGoTests.swift in Sources */,
+				79A495582A09FC13005C6ADA /* Date+Extensions.swift in Sources */,
 				7977454D2A097EC70027D597 /* Message.swift in Sources */,
 				7977456D2A09CBF50027D597 /* Constants.swift in Sources */,
 				7977456A2A09C5A20027D597 /* String+Extensions.swift in Sources */,
