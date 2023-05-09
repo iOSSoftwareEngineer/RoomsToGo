@@ -16,6 +16,8 @@ struct ContentView: View {
     @State private var alertMessage: String = ""
     @State private var isLoading = false
     
+    private var messageService = MessageService()
+    
     
     var body: some View {
         NavigationView {
@@ -75,7 +77,7 @@ struct ContentView: View {
     
     private func searchButtonTapped() {
         // Validate email address
-        if isValidEmail(email) {
+        if email.isValidEmail {
             isLoading = true
             
             // Make the API request
@@ -87,67 +89,31 @@ struct ContentView: View {
         }
     }
     
-    private func isValidEmail(_ email: String) -> Bool {
-        let emailRegex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
-        let emailPredicate = NSPredicate(format: "SELF MATCHES %@", emailRegex)
-        return emailPredicate.evaluate(with: email)
-    }
-    
     
     private func fetchData(for email: String) {
-        let baseURL = "https://vcp79yttk9.execute-api.us-east-1.amazonaws.com/messages/users/"
-        let urlString = baseURL + email
-        
-        guard let url = URL(string: urlString) else {
-            print("Invalid URL")
-            return
-        }
-        
-        let task = URLSession.shared.dataTask(with: url) { data, response, error in
-            
-            self.isLoading = false
-            
-            if let error = error {
-                print("Error: \(error.localizedDescription)")
-                return
-            }
-            
-            guard let data = data else {
-                print("No data received")
-                return
-            }
-            
-            if let responseDict = try? JSONSerialization.jsonObject(with: data) as? [String: Any],
-               let errorMessage = (responseDict["Error"] as? String ?? responseDict["Error:"] as? String), !errorMessage.isEmpty {
+            isLoading = true
+            messageService.fetchData(for: email) { [self] result in
                 DispatchQueue.main.async {
-                    let alert = UIAlertController(title: "Error", message: errorMessage, preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                    
-                    guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
-                          let rootViewController = windowScene.windows.first?.rootViewController else {
-                        fatalError("Unable to retrieve window scene or root view controller")
-                    }
-
-                    rootViewController.present(alert, animated: true, completion: nil)
-                }
-            } else {
-                do {
-                    let messages = try JSONDecoder().decode([Message].self, from: data)
-                    
-                    // Update the UI on the main thread
-                    DispatchQueue.main.async {
+                    isLoading = false
+                    switch result {
+                    case .success(let messages):
                         self.messages = messages
                         self.navigateToMessageCenter = true
+                    case .failure(let error):
+                        // Handle the error, for example, by showing an alert
+                        let alert = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
+                        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                        
+                        guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+                              let rootViewController = windowScene.windows.first?.rootViewController else {
+                            fatalError("Unable to retrieve window scene or root view controller")
+                        }
+
+                        rootViewController.present(alert, animated: true, completion: nil)
                     }
-                } catch {
-                    print("Received data: \(String(data: data, encoding: .utf8) ?? "Unable to convert data to UTF-8 string")")
-                    print("Decoding error: \(error.localizedDescription)")
                 }
             }
-        }
-        task.resume()
     }
-
 }
 
             

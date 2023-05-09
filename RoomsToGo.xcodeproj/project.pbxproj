@@ -24,6 +24,10 @@
 		7977455E2A099F2A0027D597 /* Poppins-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7977455B2A099F2A0027D597 /* Poppins-Bold.ttf */; };
 		7977455F2A099F2A0027D597 /* Poppins-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7977455C2A099F2A0027D597 /* Poppins-Regular.ttf */; };
 		797745602A099F2A0027D597 /* Poppins-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7977455C2A099F2A0027D597 /* Poppins-Regular.ttf */; };
+		797745662A09BCB80027D597 /* MessageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 797745652A09BCB80027D597 /* MessageService.swift */; };
+		797745672A09BCB80027D597 /* MessageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 797745652A09BCB80027D597 /* MessageService.swift */; };
+		797745692A09C5A20027D597 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 797745682A09C5A20027D597 /* String+Extensions.swift */; };
+		7977456A2A09C5A20027D597 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 797745682A09C5A20027D597 /* String+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +64,8 @@
 		7977455A2A099E1E0027D597 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		7977455B2A099F2A0027D597 /* Poppins-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Bold.ttf"; sourceTree = "<group>"; };
 		7977455C2A099F2A0027D597 /* Poppins-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Regular.ttf"; sourceTree = "<group>"; };
+		797745652A09BCB80027D597 /* MessageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageService.swift; sourceTree = "<group>"; };
+		797745682A09C5A20027D597 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,13 +118,15 @@
 			children = (
 				797745612A099F350027D597 /* Fonts */,
 				7977455A2A099E1E0027D597 /* Info.plist */,
-				797745212A0977030027D597 /* RoomsToGoApp.swift */,
 				797745232A0977030027D597 /* ContentView.swift */,
+				797745652A09BCB80027D597 /* MessageService.swift */,
+				7977454E2A09863B0027D597 /* MessageCenter.swift */,
 				797745252A0977050027D597 /* Assets.xcassets */,
 				797745272A0977050027D597 /* Preview Content */,
 				7977454B2A097EC70027D597 /* Message.swift */,
-				7977454E2A09863B0027D597 /* MessageCenter.swift */,
 				797745512A0995250027D597 /* APIResponse.swift */,
+				797745212A0977030027D597 /* RoomsToGoApp.swift */,
+				797745682A09C5A20027D597 /* String+Extensions.swift */,
 			);
 			path = RoomsToGo;
 			sourceTree = "<group>";
@@ -292,6 +300,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				7977454F2A09863B0027D597 /* MessageCenter.swift in Sources */,
+				797745692A09C5A20027D597 /* String+Extensions.swift in Sources */,
+				797745662A09BCB80027D597 /* MessageService.swift in Sources */,
 				7977454C2A097EC70027D597 /* Message.swift in Sources */,
 				797745242A0977030027D597 /* ContentView.swift in Sources */,
 				797745522A0995250027D597 /* APIResponse.swift in Sources */,
@@ -303,9 +313,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				797745672A09BCB80027D597 /* MessageService.swift in Sources */,
 				797745332A0977050027D597 /* RoomsToGoTests.swift in Sources */,
 				797745532A0995250027D597 /* APIResponse.swift in Sources */,
 				7977454D2A097EC70027D597 /* Message.swift in Sources */,
+				7977456A2A09C5A20027D597 /* String+Extensions.swift in Sources */,
 				797745502A09863B0027D597 /* MessageCenter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
