@@ -8,16 +8,17 @@
 import Foundation
 
 
-// Fetches messages from a server.
+// Fetches messages from the Rooms to Go AWS.
 struct MessageService {
     
     // The base URL for the API endpoint.
-    private let baseURL = "https://vcp79yttk9.execute-api.us-east-1.amazonaws.com/messages/users/"
-
+    private let baseURL = Constants.baseURL
+    
     
     // Asychronously fetch data for the given email address
     // The completion handler takes a Result type, which represents either a success with an array of Message objects or a failure with an Error.
     func fetchData(for email: String, completion: @escaping (Result<[Message], Error>) -> Void) {
+        
         // Combine the base URL with the email to create the full URL for the request.
         let urlString = baseURL + email
 
@@ -28,7 +29,7 @@ struct MessageService {
             return
         }
 
-        // Create a data task with the URL. This sends a request to the server and then runs the closure when it receives a response.
+        // Create a data task with the URL. This sends a request asynchronously to the server and then runs the closure when it receives a response.
         let task = URLSession.shared.dataTask(with: url) { data, response, error in
             // If an error occurred, print the error's description and call the completion handler with the error, then return.
             if let error = error {
@@ -61,6 +62,7 @@ struct MessageService {
                 }
             }
         }
+        
         // Start the data task. Until this point, the task has been set up but not executed.
         task.resume()
     }
