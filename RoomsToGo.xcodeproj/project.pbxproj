@@ -19,7 +19,6 @@
 		7977454C2A097EC70027D597 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7977454B2A097EC70027D597 /* Message.swift */; };
 		7977454D2A097EC70027D597 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7977454B2A097EC70027D597 /* Message.swift */; };
 		7977454F2A09863B0027D597 /* MessageCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7977454E2A09863B0027D597 /* MessageCenter.swift */; };
-		797745502A09863B0027D597 /* MessageCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7977454E2A09863B0027D597 /* MessageCenter.swift */; };
 		7977455D2A099F2A0027D597 /* Poppins-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7977455B2A099F2A0027D597 /* Poppins-Bold.ttf */; };
 		7977455E2A099F2A0027D597 /* Poppins-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7977455B2A099F2A0027D597 /* Poppins-Bold.ttf */; };
 		7977455F2A099F2A0027D597 /* Poppins-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7977455C2A099F2A0027D597 /* Poppins-Regular.ttf */; };
@@ -99,6 +98,35 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		796544792A0B4247009024B2 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				7977454E2A09863B0027D597 /* MessageCenter.swift */,
+				797745232A0977030027D597 /* ContentView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		7965447A2A0B4288009024B2 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				797745652A09BCB80027D597 /* MessageService.swift */,
+				7977456B2A09CBF50027D597 /* Constants.swift */,
+				79A495562A09FC13005C6ADA /* Date+Extensions.swift */,
+				797745682A09C5A20027D597 /* String+Extensions.swift */,
+				7977454B2A097EC70027D597 /* Message.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		7965447B2A0B42C1009024B2 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				796544762A0B34F2009024B2 /* MessageViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		797745152A0977030027D597 = {
 			isa = PBXGroup;
 			children = (
@@ -122,19 +150,14 @@
 		797745202A0977030027D597 /* RoomsToGo */ = {
 			isa = PBXGroup;
 			children = (
+				7965447B2A0B42C1009024B2 /* ViewModel */,
+				7965447A2A0B4288009024B2 /* Model */,
 				797745612A099F350027D597 /* Fonts */,
 				7977455A2A099E1E0027D597 /* Info.plist */,
-				797745232A0977030027D597 /* ContentView.swift */,
-				796544762A0B34F2009024B2 /* MessageViewModel.swift */,
-				797745652A09BCB80027D597 /* MessageService.swift */,
-				7977454E2A09863B0027D597 /* MessageCenter.swift */,
+				796544792A0B4247009024B2 /* View */,
 				797745252A0977050027D597 /* Assets.xcassets */,
 				797745272A0977050027D597 /* Preview Content */,
-				7977454B2A097EC70027D597 /* Message.swift */,
 				797745212A0977030027D597 /* RoomsToGoApp.swift */,
-				797745682A09C5A20027D597 /* String+Extensions.swift */,
-				79A495562A09FC13005C6ADA /* Date+Extensions.swift */,
-				7977456B2A09CBF50027D597 /* Constants.swift */,
 			);
 			path = RoomsToGo;
 			sourceTree = "<group>";
@@ -330,7 +353,6 @@
 				7977454D2A097EC70027D597 /* Message.swift in Sources */,
 				7977456D2A09CBF50027D597 /* Constants.swift in Sources */,
 				7977456A2A09C5A20027D597 /* String+Extensions.swift in Sources */,
-				797745502A09863B0027D597 /* MessageCenter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
