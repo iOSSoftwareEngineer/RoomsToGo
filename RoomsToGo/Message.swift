@@ -53,6 +53,17 @@ struct Message: Codable, Identifiable {
         date = dateValue
     }
     
+    
+    //Just so that we can preview the MessageCenter screen
+    #if DEBUG
+    init(name: String, date: Date, message: String) {
+        self.name = name
+        self.date = date
+        self.message = message
+    }
+    #endif
+
+    
     // Overload the equality operator for comparing messages
     static func == (lhs: Message, rhs: Message) -> Bool {
         return lhs.id == rhs.id

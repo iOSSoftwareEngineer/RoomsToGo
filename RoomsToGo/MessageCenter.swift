@@ -46,3 +46,20 @@ struct MessageCenter: View {
         }
     }
 }
+
+
+struct MessageCenter_Previews: PreviewProvider {
+    static var previews: some View {
+        
+        // We use mock data here to enable a preview for this screen.
+        let sampleMessages = [
+            Message(name: "John Doe", date: Date(), message: "Your order has been shipped!"),
+            Message(name: "Jane Doe", date: Date().addingTimeInterval(-360000), message: "There's a payment error"),
+            Message(name: "Test User", date: Date().addingTimeInterval(-720000), message: "Order received")
+        ]
+
+        MessageCenter(messages: sampleMessages)
+    }
+}
+
+

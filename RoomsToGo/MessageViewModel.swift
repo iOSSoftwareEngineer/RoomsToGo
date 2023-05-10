@@ -7,27 +7,48 @@
 
 import Foundation
 
+// MessageViewModel class which will be the ViewModel in MVVM architecture.
 class MessageViewModel: ObservableObject {
-    // Observable properties
+
+    // @Published properties are observable properties.
+    // SwiftUI will automatically watch for changes to these properties and will then re-render the views that depend on them when they change.
+
+    // Messages that are fetched from the API.
     @Published var messages: [Message] = []
+
+    // Boolean to control whether an alert is shown.
     @Published var showAlert: Bool = false
+
+    // The title and message for the alert.
     @Published var alertTitle: String = ""
     @Published var alertMessage: String = ""
+
+    // Boolean to control whether a loading indicator is shown.
     @Published var isLoading: Bool = false
+
+    // Boolean to control navigation to the MessageCenter view.
     @Published var navigateToMessageCenter: Bool = false
 
     // The MessageService is responsible for fetching the messages.
     private var messageService = MessageService()
     
-    
-    // Fetch data for the given email address
+    // Fetch data for the given email address.
+    // This method is called when the Search button is tapped.
     func fetchData(for email: String) {
-        // Validate the email address. If it is valid, fetchData() is called. Otherwise, an alert is shown.
+        
+        // Validate the email address. If it is valid, fetchData() in the MessageService is called. Otherwise, an alert is shown.
         if email.isValidEmail {
+            // Start showing the loading indicator.
             isLoading = true
+
+            // Call fetchData() in the MessageService, passing in the email address and a closure to handle the result.
             messageService.fetchData(for: email) { [weak self] result in
+                // Switch to the main queue because we're going to be updating the UI.
                 DispatchQueue.main.async {
+                    // Stop showing the loading indicator.
                     self?.isLoading = false
+
+                    // Handle the result of the fetch operation.
                     switch result {
                     case .success(let messages):
                         // If the fetch was successful, save the messages and trigger navigation to the MessageCenter.
@@ -42,10 +63,10 @@ class MessageViewModel: ObservableObject {
                 }
             }
         } else {
+            // If the email address is not valid, show an alert.
             showAlert = true
             alertTitle = "Error"
             alertMessage = "Please enter a valid email address."
         }
     }
 }
-
