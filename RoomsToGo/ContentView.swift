@@ -7,50 +7,55 @@
 
 import SwiftUI
 
-// This ContentView struct is a SwiftUI View, and it is responsible for displaying the main UI of your app.
+// The main screen
 struct ContentView: View {
-    // @State properties are used for mutable state that belongs to this specific view.
-    // The SwiftUI framework will automatically watch for changes to these properties and will then re-render the view when they change.
-    @State private var email: String = ""
-    @State private var messages: [Message] = []
-    @State private var navigateToMessageCenter = false
-    @State private var showAlert: Bool = false
-    @State private var alertTitle: String = ""
-    @State private var alertMessage: String = ""
-    @State private var isLoading = false
-
-    // The MessageService is responsible for fetching the messages.
-    private var messageService = MessageService()
-
     
-    // This is the body property, which is required for all SwiftUI views.
-    // It defines the content and layout of the view.
+    // Declare a private @State property to store the user's email.
+    // This property is initialized as an empty string and will be updated by the TextField view.
+    @State private var email: String = ""
+    
+    // Declare an @ObservedObject property to store an instance of the MessageViewModel.
+    // SwiftUI will watch for changes to this object and will re-render the view when changes are detected.
+    @ObservedObject var viewModel = MessageViewModel()
+
+    // The body property defines the content and layout of the view.
     var body: some View {
-        NavigationView {
+        // Use a NavigationView to provide a navigation bar for the view.
+        NavigationStack {
+            // Use a VStack to arrange subviews vertically.
             VStack {
-                // This section sets up the image and the static texts.
+                // Display the "RoomsToGo" image at the top of the view.
                 Image("RoomsToGo")
+                    // Add some padding below the image.
                     .padding(.bottom, 30)
                 
+                // Display a text view with the title "Message Center".
                 Text("Message Center")
+                    // Customize the font of the text view.
                     .font(.custom(Constants.defaultFont, size: Constants.mainScreenHeaderFontSize))
+                    // Add some padding below the text view.
                     .padding(.bottom, 20)
                 
-                
+                // Display a text view with instructions for the user.
                 Text("Enter your email to search for your messages")
+                    // Center the text in the text view.
                     .multilineTextAlignment(.center)
+                    // Customize the font of the text view.
                     .font(.custom(Constants.defaultFont, size: Constants.mainScreenFontSize))
                 
-                
-                // This is the TextField where the user can input their email.
+                // Display a TextField view for the user to enter their email.
                 TextField("Email", text: $email)
+                    // Use a rounded border style for the text field.
                     .textFieldStyle(RoundedBorderTextFieldStyle())
+                    // Add some padding below the text field.
                     .padding(.bottom, 20)
+                    // Set the keyboard type to .emailAddress so the user gets an email-optimized keyboard.
                     .keyboardType(.emailAddress)
+                    // Disable automatic capitalization.
                     .autocapitalization(.none)
                 
-                // This is the Search button. When pressed, it calls the searchButtonTapped() function.
-                Button(action: searchButtonTapped) {
+                // Display a Button view that the user can tap to search for messages.
+                Button(action: { self.viewModel.fetchData(for: self.email) }) {
                     Text("Search")
                         .font(.custom(Constants.defaultFont, size: Constants.mainScreenFontSize))
                         .foregroundColor(.white)
@@ -59,77 +64,28 @@ struct ContentView: View {
                         .background(Constants.searchButtonColor)
                         .cornerRadius(40)
                 }
-                // This alert is shown when showAlert is true.
-                .alert(isPresented: $showAlert) {
-                    Alert(title: Text(alertTitle), message: Text(alertMessage), dismissButton: .default(Text("OK")))
+                // Create a navigation destination to the MessageCenter view.
+                .navigationDestination(isPresented: $viewModel.navigateToMessageCenter) {
+                    MessageCenter(messages: viewModel.messages.sorted(by: { $0.date > $1.date }))
                 }
+                // Attach an alert to the button. The alert is shown when viewModel.showAlert is true.
+                .alert(isPresented: $viewModel.showAlert) {
+                    Alert(title: Text(viewModel.alertTitle), message: Text(viewModel.alertMessage), dismissButton: .default(Text("OK")))
+                }
+                // Add some padding to the button.
                 .padding(.horizontal, 20)
                 
-                // This ProgressView is shown when isLoading is true.
-                if isLoading {
+                // If viewModel.isLoading is true, show a progress view.
+                if viewModel.isLoading {
                     ProgressView()
                         .padding(.top, 20)
                 }
                 
-                // This NavigationLink navigates to the MessageCenter view when navigateToMessageCenter is true.
-                NavigationLink(
-                    destination: MessageCenter(messages: messages.sorted(by: { $0.date > $1.date })),
-                    isActive: $navigateToMessageCenter,
-                    label: { EmptyView() }
-                )
-                
+                // Use a Spacer view to push the above views towards the top of the screen.
                 Spacer()
             }
+            // Add some padding to the VStack.
             .padding()
-        }
-    }
-
-    
-    // This function is called when the Search button is tapped.
-    private func searchButtonTapped() {
-        // Validate the email address. If it is valid, fetchData() is called. Otherwise, an alert is shown.
-        if email.isValidEmail {
-            isLoading = true
-            fetchData(for: email)
-        } else {
-            showAlert = true
-            alertTitle = "Error"
-            alertMessage = "Please enter a valid email address."
-        }
-    }
-    
-    
-    // This function is responsible for fetching the data.
-    // It calls the fetchData() function in the MessageService and updates the @State properties based on the result.
-    private func fetchData(for email: String) {
-        // Set the loading indicator to visible
-        isLoading = true
-        
-        messageService.fetchData(for: email) { [self] result in
-            // Switch to the main queue because we're going to be updating the UI.
-            DispatchQueue.main.async {
-                // Stop showing the loading indicator
-                isLoading = false
-                
-                // Handle the result of the fetch operation.
-                switch result {
-                    case .success(let messages):
-                        // If the fetch was successful, save the messages and trigger navigation to the MessageCenter.
-                        self.messages = messages
-                        self.navigateToMessageCenter = true
-                    case .failure(let error):
-                        // If the fetch failed, show an alert with the error message.
-                        let alert = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
-                        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                        
-                        guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
-                              let rootViewController = windowScene.windows.first?.rootViewController else {
-                            fatalError("Unable to retrieve window scene or root view controller")
-                        }
-
-                        rootViewController.present(alert, animated: true, completion: nil)
-                }
-            }
         }
     }
 }

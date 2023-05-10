@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		796544772A0B34F2009024B2 /* MessageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 796544762A0B34F2009024B2 /* MessageViewModel.swift */; };
+		796544782A0B34F2009024B2 /* MessageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 796544762A0B34F2009024B2 /* MessageViewModel.swift */; };
 		797745222A0977030027D597 /* RoomsToGoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 797745212A0977030027D597 /* RoomsToGoApp.swift */; };
 		797745242A0977030027D597 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 797745232A0977030027D597 /* ContentView.swift */; };
 		797745262A0977050027D597 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 797745252A0977050027D597 /* Assets.xcassets */; };
@@ -50,6 +52,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		796544762A0B34F2009024B2 /* MessageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewModel.swift; sourceTree = "<group>"; };
 		7977451E2A0977030027D597 /* RoomsToGo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RoomsToGo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		797745212A0977030027D597 /* RoomsToGoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomsToGoApp.swift; sourceTree = "<group>"; };
 		797745232A0977030027D597 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -122,6 +125,7 @@
 				797745612A099F350027D597 /* Fonts */,
 				7977455A2A099E1E0027D597 /* Info.plist */,
 				797745232A0977030027D597 /* ContentView.swift */,
+				796544762A0B34F2009024B2 /* MessageViewModel.swift */,
 				797745652A09BCB80027D597 /* MessageService.swift */,
 				7977454E2A09863B0027D597 /* MessageCenter.swift */,
 				797745252A0977050027D597 /* Assets.xcassets */,
@@ -304,6 +308,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7977454F2A09863B0027D597 /* MessageCenter.swift in Sources */,
+				796544772A0B34F2009024B2 /* MessageViewModel.swift in Sources */,
 				79A495572A09FC13005C6ADA /* Date+Extensions.swift in Sources */,
 				797745692A09C5A20027D597 /* String+Extensions.swift in Sources */,
 				797745662A09BCB80027D597 /* MessageService.swift in Sources */,
@@ -320,6 +325,7 @@
 			files = (
 				797745672A09BCB80027D597 /* MessageService.swift in Sources */,
 				797745332A0977050027D597 /* RoomsToGoTests.swift in Sources */,
+				796544782A0B34F2009024B2 /* MessageViewModel.swift in Sources */,
 				79A495582A09FC13005C6ADA /* Date+Extensions.swift in Sources */,
 				7977454D2A097EC70027D597 /* Message.swift in Sources */,
 				7977456D2A09CBF50027D597 /* Constants.swift in Sources */,
