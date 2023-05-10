@@ -66,7 +66,7 @@ struct ContentView: View {
                 }
                 // Create a navigation destination to the MessageCenter view.
                 .navigationDestination(isPresented: $viewModel.navigateToMessageCenter) {
-                    MessageCenter(messages: viewModel.messages.sorted(by: { $0.date > $1.date }))
+                    MessageCenterView(messages: viewModel.messages.sorted(by: { $0.date > $1.date }))
                 }
                 // Attach an alert to the button. The alert is shown when viewModel.showAlert is true.
                 .alert(isPresented: $viewModel.showAlert) {

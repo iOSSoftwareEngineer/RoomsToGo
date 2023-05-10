@@ -1,5 +1,5 @@
 //
-//  MessageCenter.swift
+//  MessageCenterView.swift
 //  RoomsToGo
 //
 //  Created by Richard B. Rubin on 5/8/23.
@@ -7,7 +7,8 @@
 
 import SwiftUI
 
-struct MessageCenter: View {
+//Screen to show the user a list of messages for the provided email address.
+struct MessageCenterView: View {
     // array of Message objects that will be displayed in the list.
     let messages: [Message]
 
@@ -48,7 +49,7 @@ struct MessageCenter: View {
 }
 
 
-struct MessageCenter_Previews: PreviewProvider {
+struct MessageCenterView_Previews: PreviewProvider {
     static var previews: some View {
         
         // We use mock data here to enable a preview for this screen.
@@ -58,7 +59,7 @@ struct MessageCenter_Previews: PreviewProvider {
             Message(name: "Test User", date: Date().addingTimeInterval(-720000), message: "Order received")
         ]
 
-        MessageCenter(messages: sampleMessages)
+        MessageCenterView(messages: sampleMessages)
     }
 }
 

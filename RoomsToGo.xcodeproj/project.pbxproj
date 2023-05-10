@@ -18,7 +18,7 @@
 		7977453F2A0977050027D597 /* RoomsToGoUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7977453E2A0977050027D597 /* RoomsToGoUITestsLaunchTests.swift */; };
 		7977454C2A097EC70027D597 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7977454B2A097EC70027D597 /* Message.swift */; };
 		7977454D2A097EC70027D597 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7977454B2A097EC70027D597 /* Message.swift */; };
-		7977454F2A09863B0027D597 /* MessageCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7977454E2A09863B0027D597 /* MessageCenter.swift */; };
+		7977454F2A09863B0027D597 /* MessageCenterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7977454E2A09863B0027D597 /* MessageCenterView.swift */; };
 		7977455D2A099F2A0027D597 /* Poppins-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7977455B2A099F2A0027D597 /* Poppins-Bold.ttf */; };
 		7977455E2A099F2A0027D597 /* Poppins-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7977455B2A099F2A0027D597 /* Poppins-Bold.ttf */; };
 		7977455F2A099F2A0027D597 /* Poppins-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7977455C2A099F2A0027D597 /* Poppins-Regular.ttf */; };
@@ -63,7 +63,7 @@
 		7977453C2A0977050027D597 /* RoomsToGoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomsToGoUITests.swift; sourceTree = "<group>"; };
 		7977453E2A0977050027D597 /* RoomsToGoUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomsToGoUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		7977454B2A097EC70027D597 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
-		7977454E2A09863B0027D597 /* MessageCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCenter.swift; sourceTree = "<group>"; };
+		7977454E2A09863B0027D597 /* MessageCenterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCenterView.swift; sourceTree = "<group>"; };
 		7977455A2A099E1E0027D597 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		7977455B2A099F2A0027D597 /* Poppins-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Bold.ttf"; sourceTree = "<group>"; };
 		7977455C2A099F2A0027D597 /* Poppins-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Regular.ttf"; sourceTree = "<group>"; };
@@ -101,7 +101,7 @@
 		796544792A0B4247009024B2 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				7977454E2A09863B0027D597 /* MessageCenter.swift */,
+				7977454E2A09863B0027D597 /* MessageCenterView.swift */,
 				797745232A0977030027D597 /* ContentView.swift */,
 			);
 			path = View;
@@ -330,7 +330,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7977454F2A09863B0027D597 /* MessageCenter.swift in Sources */,
+				7977454F2A09863B0027D597 /* MessageCenterView.swift in Sources */,
 				796544772A0B34F2009024B2 /* MessageViewModel.swift in Sources */,
 				79A495572A09FC13005C6ADA /* Date+Extensions.swift in Sources */,
 				797745692A09C5A20027D597 /* String+Extensions.swift in Sources */,
