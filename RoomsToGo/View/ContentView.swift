@@ -63,7 +63,11 @@ struct ContentView: View {
                         .padding()
                         .background(Constants.searchButtonColor)
                         .cornerRadius(40)
+           
                 }
+                .disabled(!viewModel.isSearchButtonEnabled)
+                
+                
                 // Create a navigation destination to the MessageCenter view.
                 .navigationDestination(isPresented: $viewModel.navigateToMessageCenter) {
                     MessageCenterView(messages: viewModel.messages.sorted(by: { $0.date > $1.date }))

@@ -28,6 +28,10 @@ class MessageViewModel: ObservableObject {
 
     // Boolean to control navigation to the MessageCenter view.
     @Published var navigateToMessageCenter: Bool = false
+    
+    // Boolean to determine whether the Search button is enabled/disabled
+    @Published var isSearchButtonEnabled = true
+    
 
     // The MessageService is responsible for fetching the messages.
     private var messageService = MessageService()
@@ -38,8 +42,12 @@ class MessageViewModel: ObservableObject {
         
         // Validate the email address. If it is valid, fetchData() in the MessageService is called. Otherwise, an alert is shown.
         if email.isValidEmail {
+            
             // Start showing the loading indicator.
             isLoading = true
+            
+            //Disable the search button until the result has been returned.
+            isSearchButtonEnabled = false
 
             // Call fetchData() in the MessageService, passing in the email address and a closure to handle the result.
             messageService.fetchData(for: email) { [weak self] result in
@@ -47,6 +55,7 @@ class MessageViewModel: ObservableObject {
                 DispatchQueue.main.async {
                     // Stop showing the loading indicator.
                     self?.isLoading = false
+                    self?.isSearchButtonEnabled = true
 
                     // Handle the result of the fetch operation.
                     switch result {
