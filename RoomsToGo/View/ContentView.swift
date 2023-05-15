@@ -10,11 +10,14 @@ import SwiftUI
 // The main screen
 struct ContentView: View {
     
-    // Declare a private @State property to store the user's email.
+    // Stores the user's email
     // This property is initialized as an empty string and will be updated by the TextField view.
     @State private var email: String = ""
     
-    // Declare an @ObservedObject property to store an instance of the MessageViewModel.
+    //Stores whether the email field has focus
+    @FocusState private var emailFocused: Bool
+    
+    // Stores an instance of the MessageViewModel.
     // SwiftUI will watch for changes to this object and will re-render the view when changes are detected.
     @ObservedObject var viewModel = MessageViewModel()
 
@@ -38,13 +41,15 @@ struct ContentView: View {
                 
                 // Display a text view with instructions for the user.
                 Text("Enter your email to search for your messages")
-                    // Center the text in the text view.
+                    // Center the text in the label.
                     .multilineTextAlignment(.center)
-                    // Customize the font of the text view.
+                    // Customize the font
                     .font(.custom(Constants.defaultFont, size: Constants.mainScreenFontSize))
                 
                 // Display a TextField view for the user to enter their email.
                 TextField("Email", text: $email)
+                    //Give it focus when emailFocused is true
+                    .focused($emailFocused)
                     // Use a rounded border style for the text field.
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     // Add some padding below the text field.
@@ -53,9 +58,14 @@ struct ContentView: View {
                     .keyboardType(.emailAddress)
                     // Disable automatic capitalization.
                     .autocapitalization(.none)
+                    //Turn off autocorrect
+                    .disableAutocorrection(true)
+               
+                
                 
                 // Display a Button view that the user can tap to search for messages.
-                Button(action: { self.viewModel.fetchData(for: self.email) }) {
+                Button(action: { viewModel.fetchData(for: email) }) {
+                    
                     Text("Search")
                         .font(.custom(Constants.defaultFont, size: Constants.mainScreenFontSize))
                         .foregroundColor(.white)
@@ -66,9 +76,7 @@ struct ContentView: View {
            
                 }
                 .disabled(!viewModel.isSearchButtonEnabled)
-                
-                
-                // Create a navigation destination to the MessageCenter view.
+                // Create a navigation destination for the MessageCenterView.
                 .navigationDestination(isPresented: $viewModel.navigateToMessageCenter) {
                     MessageCenterView(messages: viewModel.messages.sorted(by: { $0.date > $1.date }))
                 }
@@ -78,6 +86,7 @@ struct ContentView: View {
                 }
                 // Add some padding to the button.
                 .padding(.horizontal, 20)
+                
                 
                 // If viewModel.isLoading is true, show a progress view.
                 if viewModel.isLoading {
@@ -90,6 +99,12 @@ struct ContentView: View {
             }
             // Add some padding to the VStack.
             .padding()
+            //When the screen appears, set the focus to the email textfield
+            .onAppear {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                    self.emailFocused = true
+                }
+            }
         }
     }
 }

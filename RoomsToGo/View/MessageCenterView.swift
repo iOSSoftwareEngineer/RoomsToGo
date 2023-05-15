@@ -9,7 +9,7 @@ import SwiftUI
 
 //Screen to show the user a list of messages for the provided email address.
 struct MessageCenterView: View {
-    // array of Message objects that will be displayed in the list.
+    // Message objects that will be displayed in the list.
     let messages: [Message]
 
     var body: some View {
@@ -34,7 +34,7 @@ struct MessageCenterView: View {
                             
                             Spacer()
                             
-                            // date of the message, formatted as a string using the customFormattedDate method
+                            // date of the message
                             Text(message.date.customFormattedDate())
                                 .font(.custom(Constants.defaultFont, size: Constants.messageCenterFontSize))
                                 .foregroundColor(.black)
