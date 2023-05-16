@@ -63,15 +63,5 @@ struct Message: Codable, Identifiable {
     }
     #endif
 
-    
-    // Overload the equality operator for comparing messages
-    static func == (lhs: Message, rhs: Message) -> Bool {
-        return lhs.id == rhs.id
-    }
-
-    // Custom implementation of the hash function for storing messages in a set or dictionary
-    func hash(into hasher: inout Hasher) {
-        hasher.combine(id)
-    }
 }
 
