@@ -19,7 +19,7 @@ struct MessageCenterView: View {
                 Section(header:
                             Text("Message Center")
                             .font(.custom(Constants.messageCenterHeaderFont, size: Constants.messageCenterBoldFontSize))
-                            .foregroundColor(.black)
+                            .foregroundColor(Color.primary)
                             .padding(.top)
                             .padding(.bottom, 8)
                 ) {
