@@ -13,7 +13,6 @@ struct MessageCenterView: View {
     let messages: [Message]
 
     var body: some View {
-        NavigationView {
             List {
                 // section header that displays "Message Center" in bold
                 Section(header:
@@ -37,14 +36,13 @@ struct MessageCenterView: View {
                             // date of the message
                             Text(message.date.customFormattedDate())
                                 .font(.custom(Constants.defaultFont, size: Constants.messageCenterFontSize))
-                                .foregroundColor(.black)
+                                .foregroundColor(Color.primary)
                         }
                     }
                 }
             }
             // style for the list that removes the default styling.
             .listStyle(PlainListStyle())
-        }
     }
 }
 
