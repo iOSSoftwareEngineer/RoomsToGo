@@ -29,7 +29,7 @@ class MainViewViewModel: ObservableObject {
     // Boolean to control navigation to the MessageCenter view.
     @Published var navigateToMessageCenter: Bool = false
     
-    // Boolean to determine whether the Search button is enabled/disabled
+    //Boolean to determine whether the Search button is enabled/disabled
     @Published var isSearchButtonEnabled = true
     
 
