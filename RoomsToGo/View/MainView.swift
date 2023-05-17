@@ -8,7 +8,7 @@
 import SwiftUI
 
 // The main screen
-struct ContentView: View {
+struct MainView: View {
     
     // Stores the user's email
     // This property is initialized as an empty string and will be updated by the TextField view.
@@ -19,7 +19,7 @@ struct ContentView: View {
     
     // Stores an instance of the MessageViewModel.
     // SwiftUI will watch for changes to this object and will re-render the view when changes are detected.
-    @ObservedObject var viewModel = MessageViewModel()
+    @ObservedObject var viewModel = MainViewViewModel()
 
     // The body property defines the content and layout of the view.
     var body: some View {
@@ -111,9 +111,9 @@ struct ContentView: View {
 
             
 
-struct ContentView_Previews: PreviewProvider {
+struct MainView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        MainView()
     }
 }
 

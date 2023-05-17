@@ -8,7 +8,7 @@
 import Foundation
 
 // MessageViewModel class which will be the ViewModel in MVVM architecture.
-class MessageViewModel: ObservableObject {
+class MainViewViewModel: ObservableObject {
 
     // @Published properties are observable properties.
     // SwiftUI will automatically watch for changes to these properties and will then re-render the views that depend on them when they change.

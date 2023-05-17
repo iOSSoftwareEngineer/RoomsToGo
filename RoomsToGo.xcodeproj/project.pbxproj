@@ -7,10 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		796544772A0B34F2009024B2 /* MessageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 796544762A0B34F2009024B2 /* MessageViewModel.swift */; };
-		796544782A0B34F2009024B2 /* MessageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 796544762A0B34F2009024B2 /* MessageViewModel.swift */; };
+		796544772A0B34F2009024B2 /* MainViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 796544762A0B34F2009024B2 /* MainViewViewModel.swift */; };
+		796544782A0B34F2009024B2 /* MainViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 796544762A0B34F2009024B2 /* MainViewViewModel.swift */; };
 		797745222A0977030027D597 /* RoomsToGoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 797745212A0977030027D597 /* RoomsToGoApp.swift */; };
-		797745242A0977030027D597 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 797745232A0977030027D597 /* ContentView.swift */; };
+		797745242A0977030027D597 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 797745232A0977030027D597 /* MainView.swift */; };
 		797745262A0977050027D597 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 797745252A0977050027D597 /* Assets.xcassets */; };
 		797745292A0977050027D597 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 797745282A0977050027D597 /* Preview Assets.xcassets */; };
 		797745332A0977050027D597 /* RoomsToGoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 797745322A0977050027D597 /* RoomsToGoTests.swift */; };
@@ -51,10 +51,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		796544762A0B34F2009024B2 /* MessageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewModel.swift; sourceTree = "<group>"; };
+		796544762A0B34F2009024B2 /* MainViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewViewModel.swift; sourceTree = "<group>"; };
 		7977451E2A0977030027D597 /* RoomsToGo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RoomsToGo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		797745212A0977030027D597 /* RoomsToGoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomsToGoApp.swift; sourceTree = "<group>"; };
-		797745232A0977030027D597 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		797745232A0977030027D597 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		797745252A0977050027D597 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		797745282A0977050027D597 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		7977452E2A0977050027D597 /* RoomsToGoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RoomsToGoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -102,7 +102,7 @@
 			isa = PBXGroup;
 			children = (
 				7977454E2A09863B0027D597 /* MessageCenterView.swift */,
-				797745232A0977030027D597 /* ContentView.swift */,
+				797745232A0977030027D597 /* MainView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -122,7 +122,7 @@
 		7965447B2A0B42C1009024B2 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				796544762A0B34F2009024B2 /* MessageViewModel.swift */,
+				796544762A0B34F2009024B2 /* MainViewViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -331,12 +331,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				7977454F2A09863B0027D597 /* MessageCenterView.swift in Sources */,
-				796544772A0B34F2009024B2 /* MessageViewModel.swift in Sources */,
+				796544772A0B34F2009024B2 /* MainViewViewModel.swift in Sources */,
 				79A495572A09FC13005C6ADA /* Date+Extensions.swift in Sources */,
 				797745692A09C5A20027D597 /* String+Extensions.swift in Sources */,
 				797745662A09BCB80027D597 /* MessageService.swift in Sources */,
 				7977454C2A097EC70027D597 /* Message.swift in Sources */,
-				797745242A0977030027D597 /* ContentView.swift in Sources */,
+				797745242A0977030027D597 /* MainView.swift in Sources */,
 				797745222A0977030027D597 /* RoomsToGoApp.swift in Sources */,
 				7977456C2A09CBF50027D597 /* Constants.swift in Sources */,
 			);
@@ -348,7 +348,7 @@
 			files = (
 				797745672A09BCB80027D597 /* MessageService.swift in Sources */,
 				797745332A0977050027D597 /* RoomsToGoTests.swift in Sources */,
-				796544782A0B34F2009024B2 /* MessageViewModel.swift in Sources */,
+				796544782A0B34F2009024B2 /* MainViewViewModel.swift in Sources */,
 				79A495582A09FC13005C6ADA /* Date+Extensions.swift in Sources */,
 				7977454D2A097EC70027D597 /* Message.swift in Sources */,
 				7977456D2A09CBF50027D597 /* Constants.swift in Sources */,
