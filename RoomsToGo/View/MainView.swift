@@ -52,6 +52,12 @@ struct MainView: View {
                     .focused($emailFocused)
                     // Use a rounded border style for the text field.
                     .textFieldStyle(RoundedBorderTextFieldStyle())
+                    //The enter button should read "Search"
+                    .submitLabel(.search)
+                     //When the search button of the keyboard is tapped, start the search
+                    .onSubmit {
+                        viewModel.fetchData(for: email)
+                    }
                     // Add some padding below the text field.
                     .padding(.bottom, 20)
                     // Set the keyboard type to .emailAddress so the user gets an email-optimized keyboard.
