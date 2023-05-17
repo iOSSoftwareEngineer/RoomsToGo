@@ -27,6 +27,16 @@ struct Message: Codable, Identifiable {
         case name, date, message
     }
 
+    
+    // Create a date formatter to parse the date string
+    static let dateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+        formatter.locale = Locale(identifier: "en_US_POSIX")
+        return formatter
+    }()
+
+    
     // Custom initializer to decode the JSON object
     init(from decoder: Decoder) throws {
         
@@ -40,14 +50,9 @@ struct Message: Codable, Identifiable {
         // Decode the date value from the container as a string
         let dateString = try container.decode(String.self, forKey: .date)
         
-        // Create a date formatter to parse the date string
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
-        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
 
-        
         // Attempt to parse the date string into a Date object using the formatter
-        guard let dateValue = dateFormatter.date(from: dateString) else {
+        guard let dateValue = Message.dateFormatter.date(from: dateString) else {
             throw DecodingError.dataCorruptedError(forKey: .date, in: container, debugDescription: "Date string does not match format expected by formatter.")
         }
         date = dateValue
